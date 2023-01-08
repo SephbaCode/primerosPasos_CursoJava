@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class ejemploArrays {
 
     public static void main(String[] args){
@@ -25,6 +27,17 @@ public class ejemploArrays {
         System.out.print('\n');
 
         for(i=0; i<array2.length; i++) System.out.print(array2[i] + " ");
+        System.out.print('\n');
+
+        //esta parte es una suma que me pidio el david
+        int a, b;
+
+        a = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un numero:"));
+        b = Integer.parseInt(JOptionPane.showInputDialog(a + " mas:"));
+
+        int c = a+b;
+
+        System.out.println("La suma es: " + c);
 
 
     }
