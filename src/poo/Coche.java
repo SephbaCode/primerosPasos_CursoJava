@@ -1,8 +1,8 @@
 package poo;
 
-//para una sintaxis mas comoda nombrar la clase con mayusculas la primera letra
+//para una sintaxis más cómoda nombrar la clase con mayúsculas la primera letra
 public class Coche {
-//vamos a realizar la encapsulacion
+//vamos a realizar la encapsulation
     final private int ruedas;
     final private int largo,ancho;
     final private int motor;
@@ -12,9 +12,12 @@ public class Coche {
     private String color;
     //private int peso_total;
     private boolean asientosCuero;
-    //private boolean limatizador
+    //private boolean climatizador
+    private boolean climatizador;
 
-    //metodo constructor
+    private int pesoTotal;
+
+    //método constructor
     public Coche(){
         ruedas = 4;
         largo = 300;
@@ -22,15 +25,15 @@ public class Coche {
         motor = 1600;
         peso_Plataforma = 500;
     }
-    // public para acceder a este metodo desde otras clases
+    // public para acceder a este método desde otras clases
     // String por el tipo de dato que va a devolver, en este caso necesito una frase
-    //nombre del metodo getter
+    //nombre del método getter
     public String dime_largo(){
-        //return obligatorio para una funcion getter
+        //return obligatorio para una función getter
         //en esta clase, la variable largo se puede usar sin restricciones
         return "El largo del coche es " + largo;
     }
-//metodos getters
+//métodos getters
     public String dime_ancho(){
         return "El ancho del coche es " + ancho;
     }
@@ -59,17 +62,48 @@ public class Coche {
         }
     }
 
-    //metodos setters
+    //métodos setters
     //public para acceder desde otras clases, void por que no devuelve nada, no necesita return
 
     public void establece_color(String colorEntrante){
         color = colorEntrante;
     }
 
-    public void configurAsientos(String asientosCuero){
-        //simplificacion del if else pues el metodo equals devuelve un boolean
-        this.asientosCuero = asientosCuero.equals("si");
+    public void configuraAsientos(String asientosCuero){
+        //simplificación del if else pues el método equals devuelve un boolean
+        this.asientosCuero = asientosCuero.equalsIgnoreCase("si");
     }
+
+    public void configuraClimatizador(String climatizador){
+        this.climatizador = climatizador.equalsIgnoreCase("si");
+    }
+    //a continuación detallo una función setter y getter a la vez.. NO SE RECOMIENDA SU USO
+    public String dimePesoCoche(){
+        int pesoCarroceria =500;
+
+        pesoTotal += pesoCarroceria;
+        //si hay asientos de cuero se suma 50
+        if (asientosCuero){
+            pesoTotal += 50;
+        }
+        if(climatizador){
+            pesoTotal += 20;
+        }
+
+        return "El peso de coche es "+pesoTotal;
+    }
+
+    //este es GETTER
+    public int precioCoche(){
+        int precioFinal = 10000;
+        if(asientosCuero){
+            precioFinal += 2000;
+        }
+        if(climatizador)precioFinal += 1500;
+
+        return precioFinal;
+    }
+
 
 
 }
