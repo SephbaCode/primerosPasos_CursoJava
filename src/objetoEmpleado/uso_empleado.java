@@ -68,9 +68,9 @@ public class uso_empleado {
         }
 
         //declaradas al final de la clase
-        private String nombre;
+        private final String nombre;
         private double sueldo;
-        private Date altaContrato;
+        private final Date altaContrato;
     }
 
 
