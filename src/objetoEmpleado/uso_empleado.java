@@ -1,4 +1,6 @@
 package objetoEmpleado;
+
+
 import java.util.*;
 
 //Aquí se puede ver un ejemplo de la clase util. Date lin 20.
@@ -21,33 +23,40 @@ public class uso_empleado {
         System.out.print("Nombre: " + empleado3.dimeNombre() + "\nSueldo: " + empleado3.dimeSueldo() + "\nFecha de alta: " + empleado3.dimeFechaContrato()+"\n\n");*/
 
         //código simplificado usando array
-        Empleado[] misEmpleados = new Empleado[3];
+        Empleado[] misEmpleados = new Empleado[4];
 
         misEmpleados[0] = new Empleado("Paco Jimenez", 85000, 1990, 12, 17);
         misEmpleados[1] = new Empleado("pedro", 95000, 1995, 6, 2);
         misEmpleados[2] = new Empleado("maria", 105000, 2002, 3, 15);
+        misEmpleados[3] = new Empleado("juan"); //perfectamente válido
+
 
         //ejemplos de bucles
         for (Empleado e:misEmpleados){
             e.subeSueldo(5);
         }
 
-        for(int i =0; i<3; i++){
-            System.out.print("Nombre: " + misEmpleados[i].dimeNombre() + "\nSueldo: " + misEmpleados[i].dimeSueldo() + "\nFecha de alta: " + misEmpleados[i].dimeFechaContrato()+"\n\n");
+        for(Empleado e: misEmpleados){
+            System.out.print("Nombre: " + e.dimeNombre() + "\nSueldo: " + e.dimeSueldo() + "\nFecha de alta: " + e.dimeFechaContrato()+"\n\n");
         }
-
-
 
     }
 }
     //método constructor
     class Empleado{
+    //si no se usan constructores se utiliza el constructor por defecto con todos los parameters vacíos
         public Empleado(String nom, double sue, int year, int mes, int day ){
             nombre = nom;
             sueldo = sue;
             //Clase que construye una fecha
             GregorianCalendar calendar = new GregorianCalendar(year, (mes-1), day);
             altaContrato = calendar.getTime();
+        }
+        //SOBRECARGA DE CONSTRUCTORES
+        public Empleado(String nom){
+            //Para no dejar los campos date y sue vacíos este método constructor dirige al otro el dato recibido
+            //y pasa los parameters asi
+            this(nom, 30000, 2000, 1, 1);
         }
 
         //GETTERS
