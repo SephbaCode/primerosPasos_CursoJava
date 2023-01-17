@@ -1,13 +1,13 @@
 package poo;
 
-import javax.swing.*;
+//import javax.swing.*;
 
-public class coche1 {
+public class UsoVehiculo {
 
     public static void  main(String[] args){
 
         //instance una clase.... un ejemplar de clase
-        Coche miCoche = new Coche();
+        /*Coche miCoche = new Coche();
 
         //establecer color mediante paso de parámetros
         miCoche.establece_color(JOptionPane.showInputDialog("Introduzca color"));
@@ -28,7 +28,23 @@ public class coche1 {
 
         miCoche.configuraClimatizador(JOptionPane.showInputDialog("climatizador?"));
         System.out.println(miCoche.dimePesoCoche());
-        System.out.println("El precio del coche es "+miCoche.precioCoche());
+        System.out.println("El precio del coche es "+miCoche.precioCoche());*/
+
+        Coche miCoche1 = new Coche();
+        miCoche1.establece_color("rojo");
+
+        Furgoneta miFurgoneta1 = new Furgoneta(7,580);
+        miFurgoneta1.establece_color("azul");
+        miFurgoneta1.configuraAsientos("si");
+        miFurgoneta1.configuraClimatizador("si");
+        System.out.println(miFurgoneta1.dimeDatosFurgoneta());
+        System.out.println(miCoche1.dimeDatosGenerales());
+        System.out.println(miFurgoneta1.dimeDatosGenerales());
+
+        //LA REGLA PARA EL DISE;O DE LA HERENCIA  " ES UN...."
+        //una furgoneta no es un coche
+        //un mejor dise;o de herencia mejor hubiera sido una furgoneta es un vehiculo
+
 
     }
 
