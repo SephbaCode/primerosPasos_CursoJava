@@ -10,13 +10,22 @@ public class uso_empleado {
         Jefe jefe_RHH = new Jefe("Mateo", 10000, 2001, 3,15);
         jefe_RHH.estableceIncentivo(2500);
 
-        Empleado[] misEmpleados = new Empleado[5];
+        Empleado[] misEmpleados = new Empleado[6];
 
         misEmpleados[0] = new Empleado("Paco Jimenez", 85000, 1990, 12, 17);
         misEmpleados[1] = new Empleado("pedro", 95000, 1995, 6, 2);
         misEmpleados[2] = new Empleado("maria", 105000, 2002, 3, 15);
         misEmpleados[3] = new Empleado("juan"); //perfectamente válido
         misEmpleados[4] = jefe_RHH;         //POLIMORFISMO USAR UN OBJETO DE UNA SUBCLASE DONDE SE ESPERA UN OBJETO DE SUPERCLASE
+        misEmpleados[5] = new Jefe("Maria", 100000, 1990, 1, 12);
+
+        //EJEMPLO DE CASTING
+        //Dado que no me permite usar un método dela clase Jefe en misEmpleados[5] se debe hacer un casting.
+        //Creando un objeto Jefe y haciendo un casting pasamos
+        Jefe jefaEco = (Jefe) misEmpleados[5];
+        jefaEco.estableceIncentivo(50000);  //aplicamos un método de clase jefe
+
+
 
         //ejemplos de bucles
         for (Empleado e:misEmpleados){
@@ -52,6 +61,7 @@ public class uso_empleado {
             return nombre;
         }
         public double dimeSueldo(){
+            //si escribiera final antes de declarar este método, en la clase hija no se pudiese crear un método con el mismo nombre
             return sueldo;
         }
         public Date dimeFechaContrato(){
@@ -70,7 +80,8 @@ public class uso_empleado {
         private final Date altaContrato;
     }
 
-    class Jefe extends Empleado{
+    final class Jefe extends Empleado{
+    //escribir final antes de class impide que otra clase herede de esta
 
         public Jefe(String nom, double sue, int year, int mes, int day) {
             super(nom, sue, year, mes, day);
@@ -92,6 +103,8 @@ public class uso_empleado {
         private double incentivo;
 
     }
+
+
 
 
 
