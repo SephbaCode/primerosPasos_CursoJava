@@ -14,7 +14,7 @@ public class uso_empleado {
 
         misEmpleados[0] = new Empleado("Paco Jimenez", 85000, 1990, 12, 17);
         misEmpleados[1] = new Empleado("pedro", 95000, 1995, 6, 2);
-        misEmpleados[2] = new Empleado("maria", 105000, 2002, 3, 15);
+        misEmpleados[2] = new Empleado("angel", 105000, 2002, 3, 15);
         misEmpleados[3] = new Empleado("juan"); //perfectamente válido
         misEmpleados[4] = jefe_RHH;         //POLIMORFISMO USAR UN OBJETO DE UNA SUBCLASE DONDE SE ESPERA UN OBJETO DE SUPERCLASE
         misEmpleados[5] = new Jefe("Maria", 100000, 1990, 1, 12);
@@ -31,15 +31,21 @@ public class uso_empleado {
         for (Empleado e:misEmpleados){
             e.subeSueldo(5);
         }
+
+        //vamos a ordenarlo
+        Arrays.sort(misEmpleados);
+
+
+
         //en el bucle la máquina virtual sabe en qué circunstancias usar un método u otro
         for(Empleado e: misEmpleados){
-            System.out.print("Nombre: " + e.dimeNombre() + "\nSueldo: " + e.dimeSueldo() + "\nFecha de alta: " + e.dimeFechaContrato()+"\n\n");
+            System.out.print("Nombre: " + e.dimeNombre() + "\tSueldo: " + e.dimeSueldo() + "\tFecha de alta: " + e.dimeFechaContrato()+"\n");
         }
 
     }
 }
     //método constructor
-    class Empleado{
+    class Empleado implements Comparable{
     //si no se usan constructores se utiliza el constructor por defecto con todos los parameters vacíos
         public Empleado(String nom, double sue, int year, int mes, int day ){
             mes--;
@@ -78,6 +84,19 @@ public class uso_empleado {
         private final String nombre;
         private double sueldo;
         private final Date altaContrato;
+
+        public int compareTo(Object miObjeto) {
+            //primero se have un casting o una refundicion
+            Empleado otroEmpleado = (Empleado) miObjeto;
+
+            if(this.sueldo < otroEmpleado.sueldo){
+                return -1;
+            }
+            if(this.sueldo > otroEmpleado.sueldo){
+                return 1;
+            }
+            return 0;
+        }
     }
 
     final class Jefe extends Empleado{
